@@ -20,6 +20,8 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+app.use(express.urlencoded({ extended: true }))
+
 
 app.get('/', (req, res) => {
     res.render('home')
@@ -39,7 +41,12 @@ app.get('/campgrounds/:id', async (req, res) => {
     res.render('campgrounds/show', { campground });
 })
 
-
+//adding new campground
+app.post('/campgrounds', async (req, res) => {
+    const campground = new Campground(req.body.campground);
+    await campground.save();
+    res.redirect(`/campgrounds/${campground._id}`);
+})
 
 app.listen(3000, () => {
     console.log("SERVING ON PORT 3000")
