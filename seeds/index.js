@@ -29,6 +29,6 @@ const seedDB = async () => {
     }
 }
 
-seedDB().then(() => {
+seedDB().then(() => { // za nove podatke: node seeds/index.js  
     db.close()
 })
