@@ -30,10 +30,15 @@ app.get('/campgrounds', async (req, res) => {
     res.render('campgrounds/index', { campgrounds }) //prosledjivanje campgrounds  u views/campgrounds/index.ejs
 })
 
+app.get('/campgrounds/new', (req, res) => { //mora biti ovdje jer ako je ispod rute sa id smatra da je new id
+    res.render('campgrounds/new');
+})
+
 app.get('/campgrounds/:id', async (req, res) => {
     const campground = await Campground.findById(req.params.id)
     res.render('campgrounds/show', { campground });
 })
+
 
 
 app.listen(3000, () => {
