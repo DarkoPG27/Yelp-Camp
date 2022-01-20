@@ -16,6 +16,8 @@ const CampgroundSchema = new Schema({
     ]
 });
 
+
+//camoground delete middleware
 CampgroundSchema.post('findOneAndDelete', async function (doc) {
     if (doc) {
         await Review.deleteMany({
