@@ -11,4 +11,10 @@ console.log(camp)
 
 const marker1 = new mapboxgl.Marker()
     .setLngLat(camp) //  ****
+    .setPopup(
+        new mapboxgl.Popup({ offset: 25 })
+            .setHTML(
+                `<h3>${camp.title}</h3>`  // ovo je undefined jer treba popraviti camp u show.ejs
+            )
+    )
     .addTo(map); 
