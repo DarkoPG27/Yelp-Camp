@@ -34,7 +34,10 @@
                     <%}%> -->
                 <div class="card-body">
                     <h5 class="card-title">
-                        <%=campground.title%>
+                        <% const camp=JSON.stringify(campground.geometry.coordinates) %>
+                            <!-- PRIKAZIVANJE TACNE LOKACIJE POPRAVITI -->
+                            <%=campground.title%>
+
                     </h5>
                     <p class="card-text">
                         <%=campground.description%>
@@ -127,10 +130,16 @@
                                     </form>
                                     <%}%>
                             </div>
+
                         </div>
                         <%}%>
+
         </div>
+
     </div>
 
-    <script>const mapToken = '<%-process.env.MAPBOX_TOKEN%>'; </script>
+    <script>
+        const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+        const camp = <%=camp%>   // popraviti  JSON LINIJA 38
+    </script>
     <script src="/javascripts/showPageMap.js"></script>
